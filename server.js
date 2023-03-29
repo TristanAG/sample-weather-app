@@ -3,8 +3,10 @@ const app = express();
 
 app.set("view engine", "ejs");
 
+app.use(express.static("style"));
+
 app.get("/", (req, res) => {
-  res.render("index", { weatherOne: {}, error: null });
+  res.render("index", { weatherOne: {}, weatherTwo: {}, error: null });
 });
 
 app.get("/forecast", async (req, res) => {
@@ -16,8 +18,10 @@ app.get("/forecast", async (req, res) => {
     .then((response) => response.json())
     .then((data) => {
       const weatherOne = data.data[0]
+      const weatherTwo = data.data[1]
+
       console.log(weatherOne)
-      res.render("index", { weatherOne: weatherOne, error: null });
+      res.render("index", { weatherOne: weatherOne, weatherTwo: weatherTwo, error: null });
     });
 });
 
