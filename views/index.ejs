@@ -22,12 +22,28 @@
 					</div>
 				</form>
 				
-				<% if (city) { %> 
-				<div>
-					<p>
-						<%= city %>
-					</p>
-				</div>
+				<% if (weatherOne) { %> 
+					<div>
+						<p>
+							<%= Date.now() %>
+						</p>
+						<p>  
+							<%= weatherOne.datetime %>
+						</p>
+						<p>  
+							<%= weatherOne.temp %>
+						</p>
+						<p>  
+							<% if (weatherOne.weather) { %> 
+								<%= weatherOne.weather.description %> | <%= weatherOne.weather.icon %>
+							<% } %>
+						</p>
+	
+						<p>  
+							<%= weatherOne.wind_spd %> | <%= weatherOne.wind_dir %>
+						</p>
+						
+					</div>
 				<% } %>
 			</div>
 		</section>
