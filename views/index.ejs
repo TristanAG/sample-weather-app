@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<html>
+	<head>
+		<title>Sample Weather App</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+	</head>
+	<body>
+		<section class="section">
+			<div class="container">
+			<h1 class="title">Sample Weather App</h1>
+			
+				<form action="/forecast" method="get">
+					<div class="field has-addons">
+						<div class="control">
+							<input class="input" type="text" name="city" placeholder="City" />
+						</div>
+						<div class="control">
+							<button type="submit" class="button is-primary">Get Weather Forecast</button>
+						</div>
+					</div>
+				</form>
+				
+				<% if (city) { %> 
+				<div>
+					<p>
+						<%= city %>
+					</p>
+				</div>
+				<% } %>
+			</div>
+		</section>
+	</body>
+</html>
