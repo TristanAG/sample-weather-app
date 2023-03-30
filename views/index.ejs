@@ -30,66 +30,35 @@
 				<table class="table is-bordered is-striped is-hoverable is-fullwidth">
 					<thead>
 						<tr>
-							<th>
-								<% if (weatherOne) { %> 
-									<%= Date.now() %>
-								<% } %>
-							</th>
-							<th>
-								<% if (weatherTwo) { %> 
-									<%= Date.now() + 1 %>
-								<% } %>
-							</th>
-							<th>Three</th>
-							<th>Four</th>
-							<th>Five</th>
-							<th>Six</th>
-							<th>Seven</th>
+							<% if (weather.length > 0) { %> 
+								<% weather.map(weatherObj => { %>
+									<th><%= weatherObj.temp %></th>
+								<% }) %>
+							<% } %>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<td>
-								<% if (weatherOne) { %> 
-									<p>  
-										<%= weatherOne.datetime %>
-									</p>
-									<p>  
-										<%= weatherOne.temp %>
-									</p>
-									<p>  
-										<% if (weatherOne.weather) { %> 
-											<%= weatherOne.weather.description %> | <%= weatherOne.weather.icon %>
-										<% } %>
-									</p>
-									<p>  
-										<%= weatherOne.wind_spd %> | <%= weatherOne.wind_dir %>
-									</p>
-								<% } %>
-							</td>
-							<td>
-								<% if (weatherTwo) { %> 
-									<p>  
-										<%= weatherTwo.datetime %>
-									</p>
-									<p>  
-										<%= weatherTwo.temp %>
-									</p>
-									<p>  
-										<% if (weatherTwo.weather) { %> 
-											<%= weatherTwo.weather.description %> | <%= weatherTwo.weather.icon %>
-										<% } %>
-									</p>
-									<p>  
-										<%= weatherTwo.wind_spd %> | <%= weatherTwo.wind_dir %>
-									</p>
-								<% } %>
-							</td>
-							<td>Three</td>
-							<td>Four</td>
-							<td>Three</td>
-							<td>Four</td>
-							<td>Three</td>
+							<% if (weather.length > 0) { %> 
+								<% weather.map(weatherObj => { %>
+									<td>
+										<p>  
+											<%= weatherObj.datetime %>
+										</p>
+										<p>  
+											<%= weatherObj.temp %>
+										</p>
+										<p>  
+											<% if (weatherOne.weather) { %> 
+												<%= weatherObj.weather.description %> | <%= weatherObj.weather.icon %>
+											<% } %>
+										</p>
+										<p>  
+											<%= weatherObj.wind_spd %> | <%= weatherObj.wind_dir %>
+										</p>
+									</td>
+								<% }) %>
+							<% } %>
 						</tr>
 					</tbody>
 				</table>
