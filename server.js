@@ -17,7 +17,7 @@ app.get("/forecast", async (req, res) => {
   if (city === '') {
     errorMessage = 'Query cannot be empty, please enter a City'
   } else if (reg.test(city)) {
-    errorMessage = 'Query cannot contain only numbers, please entery a City'
+    errorMessage = 'Query cannot contain only numbers, please enter a City'
   }
 
   if (errorMessage === null) {
