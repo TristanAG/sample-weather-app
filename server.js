@@ -10,36 +10,36 @@ app.get("/", (req, res) => {
 });
 
 app.get("/forecast", async (req, res) => {
+  const city = req.query.city
+  const reg = new RegExp(/^\d+$/)
 
-  const city = req.query.city.replace(/\d+/g, '')
+  let errorMessage = null
+  if (city === '') {
+    errorMessage = 'Query cannot be empty, please enter a City'
+  } else if (reg.test(city)) {
+    errorMessage = 'Query cannot contain only numbers, please entery a City'
+  }
 
-  if (city !== '') {
-    console.log(city)
-
+  if (errorMessage === null) {
     const apiKey = '3aa725c3067843f795c99d04f5c43586'
 
     fetch(`https://api.weatherbit.io/v2.0/forecast/daily?city=${city}&units=I&days=7&key=${apiKey}`)
       .then((response) => response.json())
       .then((data) => {
-
-        console.log(data)
         const city = data.city_name
         const weatherForecastData = setForecastData(data.data)
 
         res.render("index", { weather: weatherForecastData, city: city, error: null });
       });
   } else {
-    res.render("index", { weather: [], city: '', error: 'Query cannot be empty or only have numbers, please enter a city' });
+    res.render("index", { weather: [], city: '', error: errorMessage });
   }
-  
 });
 
 const setForecastData = (weekData) => {
-  console.log(weekData)
   // days of week aren't available in api, so need to manually set them to weather forecast array
   const dayOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
   const dayOfWeekOrdered = []
-  
   const today = new Date().getDay()
   
   let j = 0
