@@ -51,6 +51,9 @@
 											<b><%= weatherObj.temp %>&deg;</b>
 										</p>
 										<p>  
+											<small>Low: <%= weatherObj.low_temp %>&deg; | High: <%= weatherObj.high_temp %>&deg;</small>
+										</p>
+										<p>  
 											<%= weatherObj.weather.description %>
 										</p>
 										<img src="https://www.weatherbit.io/static/img/icons/<%= weatherObj.weather.icon %>.png" />

@@ -2,7 +2,9 @@ td {
     min-width: 200px;
 }
 
-@media (min-width: 1200px) {
+/* set a max width for table size so it doesn't get too large */
+
+@media (min-width: 1341px) {
     .table-container {
         overflow: none;
         overflow-y: none;
