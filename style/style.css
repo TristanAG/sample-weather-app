@@ -5,3 +5,14 @@
 td {
     min-width: 280px;
 }
+
+@media (min-width: 1200px) {
+    .table-container {
+        overflow: none;
+        overflow-y: none;
+    }
+
+    .table-container td {
+        min-width: 100%;
+    }
+}

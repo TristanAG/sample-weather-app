@@ -31,8 +31,10 @@
 					<thead>
 						<tr>
 							<% if (weather.length > 0) { %> 
-								<% weather.map(weatherObj => { %>
-									<th><%= weatherObj.temp %></th>
+								<% weather.map((weatherObj) => { %>
+									<% if (weatherObj.day) { %> 
+										<th><%= weatherObj.day %></th>
+									<% } %>
 								<% }) %>
 							<% } %>
 						</tr>
@@ -49,9 +51,7 @@
 											<%= weatherObj.temp %>
 										</p>
 										<p>  
-											<% if (weatherOne.weather) { %> 
-												<%= weatherObj.weather.description %> | <%= weatherObj.weather.icon %>
-											<% } %>
+											<%= weatherObj.weather.description %> | <%= weatherObj.weather.icon %>
 										</p>
 										<p>  
 											<%= weatherObj.wind_spd %> | <%= weatherObj.wind_dir %>
