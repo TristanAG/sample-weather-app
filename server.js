@@ -41,6 +41,7 @@ const setForecastData = (weekData) => {
   const dayOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
   const dayOfWeekOrdered = []
   const today = new Date().getDay()
+  const weatherForecast = []
   
   let j = 0
   for (i = 0; i < weekData.length; i++) {
@@ -50,17 +51,8 @@ const setForecastData = (weekData) => {
       dayOfWeekOrdered.push(dayOfWeek[j])
       j++
     }
+    weatherForecast.push({day: dayOfWeekOrdered[i], ...weekData[i]})
   }
-  
-  const weatherForecast = [
-    {day: dayOfWeekOrdered[0], ...weekData[0]}, 
-    {day: dayOfWeekOrdered[1], ...weekData[1]}, 
-    {day: dayOfWeekOrdered[2], ...weekData[2]},
-    {day: dayOfWeekOrdered[3], ...weekData[3]},
-    {day: dayOfWeekOrdered[4], ...weekData[4]},
-    {day: dayOfWeekOrdered[5], ...weekData[5]},
-    {day: dayOfWeekOrdered[6], ...weekData[6]},
-  ]
 
   return weatherForecast
 }
