@@ -6,22 +6,32 @@ app.set("view engine", "ejs");
 app.use(express.static("style"));
 
 app.get("/", (req, res) => {
-  res.render("index", { weather: [], error: null });
+  res.render("index", { weather: [], city: '', error: null });
 });
 
 app.get("/forecast", async (req, res) => {
 
-  const city = req.query.city;
-  const apiKey = '3aa725c3067843f795c99d04f5c43586'
+  const city = req.query.city.replace(/\d+/g, '')
 
-  fetch(`https://api.weatherbit.io/v2.0/forecast/daily?city=Bend&units=I&days=7&key=${apiKey}`)
-    .then((response) => response.json())
-    .then((data) => {
+  if (city !== '') {
+    console.log(city)
 
-      const weatherForecastData = setForecastData(data.data)
+    const apiKey = '3aa725c3067843f795c99d04f5c43586'
 
-      res.render("index", { weather: weatherForecastData, error: null });
-    });
+    fetch(`https://api.weatherbit.io/v2.0/forecast/daily?city=${city}&units=I&days=7&key=${apiKey}`)
+      .then((response) => response.json())
+      .then((data) => {
+
+        console.log(data)
+        const city = data.city_name
+        const weatherForecastData = setForecastData(data.data)
+
+        res.render("index", { weather: weatherForecastData, city: city, error: null });
+      });
+  } else {
+    res.render("index", { weather: [], city: '', error: 'Query cannot be empty or only have numbers, please enter a city' });
+  }
+  
 });
 
 const setForecastData = (weekData) => {

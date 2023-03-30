@@ -2,6 +2,10 @@ td {
     min-width: 200px;
 }
 
+.section {
+    padding: 2rem 2rem;
+}
+
 /* set a max width for table size so it doesn't get too large */
 
 @media (min-width: 1341px) {
