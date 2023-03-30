@@ -48,13 +48,17 @@
 											<%= weatherObj.datetime %>
 										</p>
 										<p>  
-											<%= weatherObj.temp %>
+											<b><%= weatherObj.temp %>&deg;</b>
 										</p>
 										<p>  
-											<%= weatherObj.weather.description %> | <img src="https://www.weatherbit.io/static/img/icons/<%= weatherObj.weather.icon %>.png" />
+											<%= weatherObj.weather.description %>
 										</p>
+										<img src="https://www.weatherbit.io/static/img/icons/<%= weatherObj.weather.icon %>.png" />
 										<p>  
-											<%= weatherObj.wind_spd %> | <%= weatherObj.wind_dir %>
+											<small>Wind Speed: <%= weatherObj.wind_spd %></small> 
+										</p>
+										<p>
+											<small>Wind Direction: <%= weatherObj.wind_dir %></small>
 										</p>
 									</td>
 								<% }) %>
