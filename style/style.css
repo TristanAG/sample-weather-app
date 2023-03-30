@@ -6,8 +6,7 @@ td {
     padding: 2rem 2rem;
 }
 
-/* set a max width for table size so it doesn't get too large */
-
+/* if browser is > 1341px show table-container without overflow so table can expand */
 @media (min-width: 1341px) {
     .table-container {
         overflow: none;
@@ -16,5 +15,15 @@ td {
 
     .table-container td {
         min-width: 100%;
+    }
+}
+
+/* if browser is > 1500px remove overflow from table-container and center table so it doesn't get too giant */
+@media (min-width: 1500px) {
+    .table-container {
+        overflow: none;
+        overflow-y: none;
+        width: 1500px;
+        margin: 0 auto;
     }
 }
