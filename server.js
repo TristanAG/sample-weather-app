@@ -25,7 +25,7 @@ app.get("/forecast", async (req, res) => {
 });
 
 const setForecastData = (weekData) => {
-  
+  console.log(weekData)
   // days of week aren't available in api, so need to manually set them to weather forecast array
   const dayOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
   const dayOfWeekOrdered = []

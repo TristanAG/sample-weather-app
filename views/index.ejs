@@ -10,8 +10,8 @@
 
 	<body>
 		<section class="section">
-			<div class="container form-container">
-				<h1 class="title">Sample Weather App</h1>
+			<div class="container">
+				<h1 class="title has-text-centered">Sample Weather App</h1>
 				<form action="/forecast" method="get">
 					<div class="field has-addons is-grouped is-grouped-centered">
 						<div class="control">
@@ -33,7 +33,7 @@
 							<% if (weather.length > 0) { %> 
 								<% weather.map((weatherObj) => { %>
 									<% if (weatherObj.day) { %> 
-										<th><%= weatherObj.day %></th>
+										<th class="has-text-centered"><%= weatherObj.day %></th>
 									<% } %>
 								<% }) %>
 							<% } %>
@@ -43,7 +43,7 @@
 						<tr>
 							<% if (weather.length > 0) { %> 
 								<% weather.map(weatherObj => { %>
-									<td>
+									<td class="has-text-centered">
 										<p>  
 											<%= weatherObj.datetime %>
 										</p>
@@ -51,7 +51,7 @@
 											<%= weatherObj.temp %>
 										</p>
 										<p>  
-											<%= weatherObj.weather.description %> | <%= weatherObj.weather.icon %>
+											<%= weatherObj.weather.description %> | <img src="https://www.weatherbit.io/static/img/icons/<%= weatherObj.weather.icon %>.png" />
 										</p>
 										<p>  
 											<%= weatherObj.wind_spd %> | <%= weatherObj.wind_dir %>
